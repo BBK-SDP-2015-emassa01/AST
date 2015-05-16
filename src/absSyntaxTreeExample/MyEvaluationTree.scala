@@ -4,10 +4,10 @@ package absSyntaxTreeExample
 sealed trait EvaluationTree
 final case class Term(i: Int) extends EvaluationTree
 final case class Function(str: String, args: Seq[EvaluationTree]) extends EvaluationTree
-final case class Sum(e1:EvaluationTree, e2:EvaluationTree) extends EvaluationTree
-final case class Prod(e1:EvaluationTree, e2:EvaluationTree) extends EvaluationTree
+final case class Sum(e1: EvaluationTree, e2: EvaluationTree) extends EvaluationTree
+final case class Prod(e1: EvaluationTree, e2: EvaluationTree) extends EvaluationTree
 
-object MyEvaluationTree extends App{
+object MyEvaluationTree extends App {
 
   def mkString(args: Seq[EvaluationTree], str: String): String =
     args match {
@@ -20,19 +20,17 @@ object MyEvaluationTree extends App{
     case Term(i) => i.toString
     case Function(str, args) => "(" + mkString(args, str) + ")"
   }
-  
-  
-  def eval(expr: EvaluationTree):Int = expr match{
+
+  def eval(expr: EvaluationTree): Int = expr match {
     case Term(n) => n
     case Sum(ex1, ex2) => eval(ex1) + eval(ex2)
     case Prod(ex1, ex2) => eval(ex1) * eval(ex2)
-    case Function(str, args) => throw new MatchError ("An eval has been called on an entire tree!")
-      }
+  }
 
-  
-  println(printATree(Function("+", Seq(Term(5), Term(3)))))
-  println(printATree(Function("+", Seq(Term(2), Function("-", Seq(Term(3), Term(5), Term(6)))))))
-  
+  println("Printing the tree...")
+  println(printATree(Function("+", Seq(Term(2), Function("*", Seq(Term(3), Term(5), Term(6)))))))
+  println("Evaluating the tree...")
+  println(eval(Sum(Term(2), (Prod(Term(3), Term(5))))))
 
   //FLATTEN
   val thingToPrint = List(List(1, 2), List(3, 4))
@@ -42,6 +40,5 @@ object MyEvaluationTree extends App{
   }
   println(thingToPrint)
   println(flatten(thingToPrint))
-  
 
 }
