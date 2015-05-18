@@ -25,12 +25,13 @@ object MyEvaluationTree extends App {
     case Term(n) => n
     case Sum(ex1, ex2) => eval(ex1) + eval(ex2)
     case Prod(ex1, ex2) => eval(ex1) * eval(ex2)
+//    case Function(str, args) => flattenTree(args)
   }
 
   println("Printing the tree...")
   println(printATree(Function("+", Seq(Term(2), Function("*", Seq(Term(3), Term(5), Term(6)))))))
   println("Evaluating the tree...")
-  println(eval(Sum(Term(2), (Prod(Term(3), Term(5))))))
+  println(eval(Sum(Term(2), Prod(Term(3), Term(5)))))
 
   //FLATTEN
   val thingToPrint = List(List(1, 2), List(3, 4))
@@ -40,5 +41,11 @@ object MyEvaluationTree extends App {
   }
   println(thingToPrint)
   println(flatten(thingToPrint))
+  
+  //FLATTEN EVAL TREE
+    def flattenTree(seq: Seq[Seq[EvaluationTree]]): Seq[EvaluationTree] = seq match {
+    case Nil => Nil
+    case h :: tail => h ++ flattenTree(tail)
+  }
 
 }
