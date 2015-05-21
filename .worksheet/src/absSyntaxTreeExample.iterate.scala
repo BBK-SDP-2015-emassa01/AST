@@ -6,8 +6,8 @@ object iterate {;import org.scalaide.worksheet.runtime.library.WorksheetSupport.
     x #:: iterate(f(x), f)
   };System.out.println("""iterate: [T](x: T, f: T => T)Stream[T]""");$skip(36); val res$0 = 
   
-  iterate(5, ((x:Int) => (x*x)));System.out.println("""res0: Stream[Int] = """ + $show(res$0));$skip(36); 
-  
+  iterate(5, ((x:Int) => (x*x)));System.out.println("""res0: Stream[Int] = """ + $show(res$0));$skip(34); 
+
   def func(t:Int):Int ={
   t
   };System.out.println("""func: (t: Int)Int""");$skip(131); 
