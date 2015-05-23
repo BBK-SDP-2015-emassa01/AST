@@ -16,11 +16,11 @@ object typeeys {;import org.scalaide.worksheet.runtime.library.WorksheetSupport.
       else map = map + (x._2 -> map(x._2 + 1))
     })))
     map
-  };System.out.println("""findGrade: (results: absSyntaxTreeExample.typeeys.Results, gradeBoundary: Int)Map[Int,Int]""");$skip(433); 
+  };System.out.println("""findGrade: (results: absSyntaxTreeExample.typeeys.Results, gradeBoundary: Int)Map[Int,Int]""");$skip(122); 
 
-  //  def keepGrade(results: Results, gradeBoundary: Int) = {
-  //   results collect {case x.foreach (x=>x._2 >70) }
-  //  }
+   def keepGrade(results: Results, gradeBoundary: Int) = {
+    results collect {case x => x.foreach (x=>x._2 >70) }
+   };System.out.println("""keepGrade: (results: absSyntaxTreeExample.typeeys.Results, gradeBoundary: Int)Seq[Unit]""");$skip(307); 
 
   // def keepGrade(portfolio: Portfolio):Int = {
   // portfolio.foreach(x => collect{case i:Int => i > 70})

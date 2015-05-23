@@ -11,7 +11,7 @@ object insertSort {
 
   def sort(x: Int, thelist: List[Int]): List[Int] = thelist match {
     case List() => List(x)
-    case headx :: xs => if (x < headx) x :: thelist else headx :: sort(x, xs)
+    case headx :: remaininglist => if (x < headx) x :: thelist else headx :: sort(x, remaininglist)
   }                                               //> sort: (x: Int, thelist: List[Int])List[Int]
 
   val thisCrapList = List(3, 2, 5, 4, 2, 6, 9, 7, 5, 4)

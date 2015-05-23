@@ -21,6 +21,7 @@ object SortElems extends App {
 
   val thisCrapList = List(1, 2, 5, 4, 2, 6, 9, 7, 5, 4).sortWith(hashfunc)
 
+  
   def hashfunc(a: Int, b: Int) = {
     a * 100 / 2 > b * 100
   }
@@ -29,10 +30,37 @@ object SortElems extends App {
 
   val list = List(("a", "b", "c"), ("d", "e"), ("f", "g", "h"), ("d", "e"),
     ("i", "j", "k", "l"), ("m", "n"), ("o"))
-    
-    list map (x=> list.length)
-  
-  thisCrapList.sortWith{_ < _}
-    
+
+  list map (x => list.length)
+
+  thisCrapList.sortWith { _ < _ }
+  val l1 = List(1, 4, 7, 10)
+  val l2 = List(2, 3, 5, 7, 12, 16)
+  def merge[T](alist: List[T], blist: List[T])(cmp: (T, T) => Boolean): List[T] = {
+    def mergeHelper(AL: List[T], BL: List[T], accList: List[T]): List[T] = (AL, BL) match {
+      case (Nil, _) => accList.reverse ++ BL //this also takes care of when both lists are Nil (i.e., any)
+      case (_, Nil) => accList.reverse ++ AL
+      case (x :: xs, y :: ys) =>
+        if (cmp(x, y)) mergeHelper(BL, xs, x :: accList)
+        else mergeHelper(ys, AL, y :: accList)
+      
+    }
+    mergeHelper(alist, blist, Nil)
+  }
+
+  merge(l1, l2)((x, y) => x <= y)
+
+  def mergeKeiths[T](aList: List[T], bList: List[T])(cmp: (T, T) => Boolean): List[T] = {
+    def mergeHelper2(aL: List[T], bL: List[T], accList: List[T]): List[T] = (aL, bL) match {
+      case (Nil, _) => accList ++ bL // could use reverse on accList
+      case (_, Nil) => accList ++ aL // to save space (and time?)
+      case (x :: xs, y :: ys) => {
+        if (cmp(x, y)) mergeHelper2(xs, bL, accList :+ x)
+        else mergeHelper2(aL, ys, accList :+ y)
+      }
+    }
+    mergeHelper2(aList, bList, Nil)
+  }
+  mergeKeiths(l1, l2)((x, y) => x <= y)
 }
 

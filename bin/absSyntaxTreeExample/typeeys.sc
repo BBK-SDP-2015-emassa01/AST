@@ -19,9 +19,10 @@ object typeeys {
   }                                               //> findGrade: (results: absSyntaxTreeExample.typeeys.Results, gradeBoundary: In
                                                   //| t)Map[Int,Int]
 
-  //  def keepGrade(results: Results, gradeBoundary: Int) = {
-  //   results collect {case x.foreach (x=>x._2 >70) }
-  //  }
+   def keepGrade(results: Results, gradeBoundary: Int) = {
+    results collect {case x => x.foreach (x=>x._2 >70) }
+   }                                              //> keepGrade: (results: absSyntaxTreeExample.typeeys.Results, gradeBoundary: In
+                                                  //| t)Seq[Unit]
 
   // def keepGrade(portfolio: Portfolio):Int = {
   // portfolio.foreach(x => collect{case i:Int => i > 70})

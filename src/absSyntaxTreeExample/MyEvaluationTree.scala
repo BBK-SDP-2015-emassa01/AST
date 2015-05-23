@@ -48,4 +48,5 @@ object MyEvaluationTree extends App {
     case h :: tail => h ++ flattenTree(tail)
   }
 
+
 }
