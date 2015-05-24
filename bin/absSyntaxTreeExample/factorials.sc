@@ -18,6 +18,10 @@ object factorials {
   else n* factorial (n-1)
   }                                               //> factorial: (n: Int)Int
   
+  def factorialTail(n:Int, acc: Long = 1): Long = {
+  if (n <= 0) acc else factorialTail(n-1, acc * n)
+  }                                               //> factorialTail: (n: Int, acc: Long)Long
+  
   factorial(5)                                    //> res1: Int = 120
   factorial(2)                                    //> res2: Int = 2
   factorial(1)                                    //> res3: Int = 1
@@ -26,10 +30,17 @@ object factorials {
   
   //tail recursion
   // @tailrec
-  def factorial1(n: Int, acc: Long): Long =
+  def factorial1(n: Int, acc: Long=1): Long =
     if (n <= 0)  acc else factorial1(n - 1, acc * n)
                                                   //> factorial1: (n: Int, acc: Long)Long
     
     factorial1(0,1)                               //> res5: Long = 1
+    
+    def sortList (x:Int, y:Int) : Boolean =  {
+    x<y
+    }                                             //> sortList: (x: Int, y: Int)Boolean
+  
+  val unsortedList = List(9,8,7,3,5,6,8,7,5,3,2)  //> unsortedList  : List[Int] = List(9, 8, 7, 3, 5, 6, 8, 7, 5, 3, 2)
+  unsortedList.sortWith(sortList)                 //> res6: List[Int] = List(2, 3, 3, 5, 5, 6, 7, 7, 8, 8, 9)
   
 }

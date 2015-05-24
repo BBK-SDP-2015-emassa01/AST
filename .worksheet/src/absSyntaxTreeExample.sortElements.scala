@@ -68,7 +68,7 @@ object sortElements {;import org.scalaide.worksheet.runtime.library.WorksheetSup
      }*/
      
      def factorise(theSeq1: Seq[Double], theSeq2: Seq[Double], factor: Double): Seq[Double] = theSeq1 match{
-     case x :: xs => (x * factor) :: factorise(xs, theSeq2, factor)
+     case x :: xs => (x * factor) +: factorise(xs, theSeq2, factor)
      };System.out.println("""factorise: (theSeq1: Seq[Double], theSeq2: Seq[Double], factor: Double)Seq[Double]""");$skip(38); 
      
      val Seq1 = Seq (1,2,3,4,5);System.out.println("""Seq1  : Seq[Int] = """ + $show(Seq1 ));$skip(32); 

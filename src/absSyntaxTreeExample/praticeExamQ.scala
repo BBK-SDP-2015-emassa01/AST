@@ -1,7 +1,7 @@
 package absSyntaxTreeExample
 
-import scala.math._
-import scala.io._
+//import scala.math._
+//import scala.io._
 
 object praticeExamQ extends App {
 
