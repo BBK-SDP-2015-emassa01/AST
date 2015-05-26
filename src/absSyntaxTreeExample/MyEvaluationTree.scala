@@ -7,6 +7,8 @@ final case class Function(str: String, args: Seq[EvaluationTree]) extends Evalua
 final case class Sum(e1: EvaluationTree, e2: EvaluationTree) extends EvaluationTree
 final case class Prod(e1: EvaluationTree, e2: EvaluationTree) extends EvaluationTree
 
+
+
 object MyEvaluationTree extends App {
 
   def mkString(args: Seq[EvaluationTree], str: String): String =
@@ -25,7 +27,6 @@ object MyEvaluationTree extends App {
     case Term(n) => n
     case Sum(ex1, ex2) => eval(ex1) + eval(ex2)
     case Prod(ex1, ex2) => eval(ex1) * eval(ex2)
-//    case Function(str, args) => flattenTree(args)
   }
 
   println("Printing the tree...")
@@ -48,5 +49,12 @@ object MyEvaluationTree extends App {
     case h :: tail => h ++ flattenTree(tail)
   }
 
+  
+  // something to take in string and evaluate it. (2+(3-5-6))
+  
+  val str = "(2+(3-5-6))"
+  
+  val strList = str.toList
+  
 
 }

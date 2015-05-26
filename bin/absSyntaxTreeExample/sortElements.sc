@@ -78,7 +78,41 @@ object sortElements {
      val Seq1 = Seq (1,2,3,4,5)                   //> Seq1  : Seq[Int] = List(1, 2, 3, 4, 5)
      val Seq2 = Seq (1,2,3,4,5)                   //> Seq2  : Seq[Int] = List(1, 2, 3, 4, 5)
      
-     Seq1 ++ Seq2                                 //> res3: Seq[Int] = List(1, 2, 3, 4, 5, 1, 2, 3, 4, 5)
+     Seq2.filter(x=> x>2)                         //> res3: Seq[Int] = List(3, 4, 5)
      
+     Seq1 ++ Seq2                                 //> res4: Seq[Int] = List(1, 2, 3, 4, 5, 1, 2, 3, 4, 5)
+     
+     
+     val words = Array("Esha", "Manoj", "Raju", "Laju", "Pups")
+                                                  //> words  : Array[String] = Array(Esha, Manoj, Raju, Laju, Pups)
+     
+     words.sortWith(_.length<_.length)            //> res5: Array[String] = Array(Esha, Raju, Laju, Pups, Manoj)
+     words.sortWith(_.length>_.length)            //> res6: Array[String] = Array(Manoj, Esha, Raju, Laju, Pups)
+     words.sortWith(_.substring(0,1) < _.substring(0,1))
+                                                  //> res7: Array[String] = Array(Esha, Laju, Manoj, Pups, Raju)
+    val (first, second) = words.partition(x=> x.contains("e") | x.contains("E"))
+                                                  //> first  : Array[String] = Array(Esha)
+                                                  //| second  : Array[String] = Array(Manoj, Raju, Laju, Pups)
+     first++second                                //> res8: Array[String] = Array(Esha, Manoj, Raju, Laju, Pups)
+     
+     def squareArg(list:Int*) : Int = {
+     (list.map(x => x*x)).sum
+     }                                            //> squareArg: (list: Int*)Int
+     
+     squareArg(1,2,4)                             //> res9: Int = 21
+     
+     def oddGT10(vector:Vector[Int]): Vector[Int] = {
+     //vector.filter(x => x%2 !=0 && x>10)
+     for {
+     n<-vector
+     if n>10
+     isOdd = (n%2 !=0)
+     if (isOdd)
+     } yield n
+     }                                            //> oddGT10: (vector: Vector[Int])Vector[Int]
+     
+     oddGT10(Vector(101,21,301,401,51,6001,701,81,901,1001))
+                                                  //> res10: Vector[Int] = Vector(101, 21, 301, 401, 51, 6001, 701, 81, 901, 1001
+                                                  //| )
      
      }

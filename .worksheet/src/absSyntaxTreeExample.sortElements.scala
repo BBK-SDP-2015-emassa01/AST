@@ -72,9 +72,37 @@ object sortElements {;import org.scalaide.worksheet.runtime.library.WorksheetSup
      };System.out.println("""factorise: (theSeq1: Seq[Double], theSeq2: Seq[Double], factor: Double)Seq[Double]""");$skip(38); 
      
      val Seq1 = Seq (1,2,3,4,5);System.out.println("""Seq1  : Seq[Int] = """ + $show(Seq1 ));$skip(32); 
-     val Seq2 = Seq (1,2,3,4,5);System.out.println("""Seq2  : Seq[Int] = """ + $show(Seq2 ));$skip(24); val res$3 = 
+     val Seq2 = Seq (1,2,3,4,5);System.out.println("""Seq2  : Seq[Int] = """ + $show(Seq2 ));$skip(32); val res$3 = 
      
-     Seq1 ++ Seq2;System.out.println("""res3: Seq[Int] = """ + $show(res$3))}
+     Seq2.filter(x=> x>2);System.out.println("""res3: Seq[Int] = """ + $show(res$3));$skip(24); val res$4 = 
      
+     Seq1 ++ Seq2;System.out.println("""res4: Seq[Int] = """ + $show(res$4));$skip(76); 
+     
+     
+     val words = Array("Esha", "Manoj", "Raju", "Laju", "Pups");System.out.println("""words  : Array[String] = """ + $show(words ));$skip(45); val res$5 = 
+     
+     words.sortWith(_.length<_.length);System.out.println("""res5: Array[String] = """ + $show(res$5));$skip(39); val res$6 = 
+     words.sortWith(_.length>_.length);System.out.println("""res6: Array[String] = """ + $show(res$6));$skip(57); val res$7 = 
+     words.sortWith(_.substring(0,1) < _.substring(0,1));System.out.println("""res7: Array[String] = """ + $show(res$7));$skip(81); 
+    val (first, second) = words.partition(x=> x.contains("e") | x.contains("E"));System.out.println("""first  : Array[String] = """ + $show(first ));System.out.println("""second  : Array[String] = """ + $show(second ));$skip(19); val res$8 = 
+     first++second;System.out.println("""res8: Array[String] = """ + $show(res$8));$skip(83); 
+     
+     def squareArg(list:Int*) : Int = {
+     (list.map(x => x*x)).sum
+     };System.out.println("""squareArg: (list: Int*)Int""");$skip(28); val res$9 = 
+     
+     squareArg(1,2,4);System.out.println("""res9: Int = """ + $show(res$9));$skip(203); 
+     
+     def oddGT10(vector:Vector[Int]): Vector[Int] = {
+     //vector.filter(x => x%2 !=0 && x>10)
+     for {
+     n<-vector
+     if n>10
+     isOdd = (n%2 !=0)
+     if (isOdd)
+     } yield n
+     };System.out.println("""oddGT10: (vector: Vector[Int])Vector[Int]""");$skip(67); val res$10 = 
+     
+     oddGT10(Vector(101,21,301,401,51,6001,701,81,901,1001));System.out.println("""res10: Vector[Int] = """ + $show(res$10))}
      
      }
