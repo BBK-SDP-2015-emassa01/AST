@@ -16,7 +16,7 @@ object iterate {;import org.scalaide.worksheet.runtime.library.WorksheetSupport.
 
   def iterated[T](f: T => T): Stream[T=>T] = {
     ((id: T)=> id) #:: iterated(f) map (_ andThen f)
-  };System.out.println("""iterated: [T](f: T => T)Stream[T => T]""");$skip(650); 
+  };System.out.println("""iterated: [T](f: T => T)Stream[T => T]""");$skip(675); 
   ////////////////////////
   def mergings(alist: List[Int]): List[Int] = {
     val n = alist.length / 2
@@ -28,7 +28,7 @@ object iterate {;import org.scalaide.worksheet.runtime.library.WorksheetSupport.
           case xsh :: xst =>
             ys match {
               case Nil => xs
-              case ysh :: yst => if (ysh.compareTo(xsh) < 0) ysh :: concatOrd(xs, yst) //for generics use x.compareTo(y)
+              case ysh :: yst => if (ysh.compareTo(xsh) < 0) ysh :: concatOrd(xs, yst) //for generics use a cmp(x,y) => x<y functon or something.
               else xsh :: concatOrd(xst, ys)
             }
         }

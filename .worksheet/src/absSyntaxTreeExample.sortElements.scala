@@ -40,8 +40,8 @@ object sortElements {;import org.scalaide.worksheet.runtime.library.WorksheetSup
       case (Nil, _) => accList ++ bL // could use reverse on accList
       case (_, Nil) => accList ++ aL // to save space (and time?)
       case (x :: xs, y :: ys) => {
-        if (cmp(x, y)) mergeHelper2(xs, bL, accList :+ x)
-        else mergeHelper2(aL, ys, accList :+ y)
+        if (cmp(x, y)) mergeHelper2(xs, bL, accList :: x)
+        else mergeHelper2(aL, ys, accList :: y)
       }
     }
     mergeHelper2(aList, bList, Nil)
